@@ -1,3 +1,6 @@
+import type { BSDate } from 'bikram-sambat-react'
+import { NepaliDatePicker } from 'bikram-sambat-react'
+import 'bikram-sambat-react/styles.css'
 import {
   ArrowRight,
   CalendarDays,
@@ -15,6 +18,7 @@ import { Field } from './field'
 export function BookingForm() {
   const [passengers, setPassengers] = useState(1)
   const [submitted, setSubmitted] = useState(false)
+  const [date, setDate] = useState<BSDate>()
 
   function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -75,7 +79,22 @@ export function BookingForm() {
           required
           name="date"
           type="date"
-        />
+        >
+          <NepaliDatePicker
+            value={date}
+            onChange={setDate}
+            clearable
+            iconPosition="start"
+            className="w-full"
+            classNames={{
+              root: 'w-full h-13!',
+              field:
+                'h-13! min-h-0! w-full border border-[#dfe5e1]! bg-[#fbfcfb]! rounded-xl! focus-within:border-[#2d9c6b]! focus-within:shadow-none! focus-within:shadow-none! focus-within:ring-4 transition focus-within:ring-[#2d9c6b]/10 py-2!',
+              input: 'h-13 w-full placeholder:text-[#a4ada8]',
+              trigger: 'rounded-2xl! h-10!',
+            }}
+          />
+        </Field>
         <div className="flex flex-col gap-2 text-sm font-semibold">
           <span>Passengers</span>
           <div className="flex h-13 items-center justify-between rounded-xl border border-[#dfe5e1] bg-[#fbfcfb] px-4">

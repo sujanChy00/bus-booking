@@ -160,3 +160,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+/*.nc-date-picker-field:focus-within {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}*/
